@@ -51,17 +51,18 @@
         <!-- 图标 -->
         <span class="el-icon-s-fold icon" @click="toggleMenu"></span>
         <span class="text">传智播客教育有限公司</span>
+
         <el-dropdown class="cD">
           <span class="el-dropdown-link">
-            <img src="../../assets/avatar.jpg" alt />
-            <span class="userName">凤姐</span>
+            <img :src="photo" alt />
+            <span class="userName">{{name}}</span>
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>
-              <span class="el-icon-setting"></span> 个人设置
+            <el-dropdown-item @click.native="setting">
+             <span class="el-icon-setting"></span> 个人设置
             </el-dropdown-item>
-            <el-dropdown-item>
+            <el-dropdown-item @click.native="logout">
               <span class="el-icon-unlock"></span> 退出登录
             </el-dropdown-item>
           </el-dropdown-menu>
@@ -77,17 +78,34 @@
 </template>
 
 <script>
+import local from '@/utils/local'
 export default {
   data () {
     return {
       // 根据这个属性值控制菜单栏收起展开
-      isOpen: true
+      isOpen: true,
+      // 头像
+      photo: '',
+      // 名称
+      name: ''
     }
+  },
+  created () { // 页面初始化的时候的钩子函数
+    const user = local.getUser() || {} // 如果没有值也不会报错空对象返回的是undefined
+    this.photo = user.photo // 获取头像并赋值
+    this.name = user.name
   },
   methods: {
     toggleMenu () {
       // 切换菜单栏的展开和收起
       this.isOpen = !this.isOpen
+    },
+    setting () { // 进入个人设置页面的方法
+      this.$router.push('/setting')
+    },
+    logout () {
+      local.delUser()
+      this.$router.push('/login')
     }
   }
 }

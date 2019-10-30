@@ -32,6 +32,8 @@
 </template>
 
 <script>
+import local from '@/utils/local'
+
 export default {
   data () {
     // 校验手机号的函数
@@ -45,8 +47,8 @@ export default {
     }
     return {
       LoginForm: {
-        mobile: '',
-        code: ''
+        mobile: '13911111111',
+        code: '246810'
       },
       LoginRules: {
         // 对象方法里边是数组 数组里是对象每个对象都是一个校验规则
@@ -65,18 +67,28 @@ export default {
   methods: {
     login () {
       // 整体校验
-      this.$refs['loginForm'].validate(valid => {
+      this.$refs['loginForm'].validate(async valid => {
         if (valid) {
-          this.$http
-            .post('authorizations', this.LoginForm)
-            .then(res => {
-              // 成功
-              this.$router.push('/')
-            })
-            .catch(() => {
-              // 失败 提示
-              this.$message.error('手机号或验证码错误')
-            })
+          // this.$http
+          //   .post('authorizations', this.LoginForm)
+          //   .then(res => {
+          //     // 成功
+          //     // 保存用户信息 去utils中设置一个操作用户的功能函数
+          //     local.setUser(res.data.data) // 这个操作是保存用户信息 下一步是导航守卫
+          //     this.$router.push('/')
+          // })
+          // .catch(() => {
+          //   // 失败 提示
+          //   this.$message.error('手机号或验证码错误')
+          // })
+          // 改造代码
+          try {
+            const { data: { data } } = await this.$http.post('authorizations', this.LoginForm)
+            local.setUser(data)
+            this.$router.push('/')
+          } catch (e) { // 失败 提示
+            this.$message.error('手机号或验证码错误')
+          }
         }
       })
     }

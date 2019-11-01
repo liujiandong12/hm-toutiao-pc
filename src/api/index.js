@@ -2,8 +2,16 @@
 import axios from 'axios'
 import local from '@/utils/local'
 import router from '@/router'
-
+import JSONBIG from 'json-bigint'// 解决最大数字的问题
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0/'
+axios.defaults.transformResponse = [(data) => {
+  // 后台的原始数据   理想情况 json字符串
+  try {
+    return JSONBIG.parse(data)
+  } catch (e) {
+    return data
+  }
+}]
 // 设置请求头过程
 // if (local.getUser()) {
 //   axios.defaults.headers.Authorization = `Bearer ${local.getUser().token}`

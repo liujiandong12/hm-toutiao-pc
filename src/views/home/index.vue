@@ -6,7 +6,7 @@
       <div class="logo" :class="{smallLogo:!isOpen}"></div>
       <!-- 菜单 -->
       <el-menu
-        default-active="/"
+        :default-active="$route.path"
         background-color="#002033"
         text-color="#fff"
         active-text-color="#ffd04b"
@@ -60,7 +60,7 @@
           </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item @click.native="setting">
-             <span class="el-icon-setting"></span> 个人设置
+              <span class="el-icon-setting"></span> 个人设置
             </el-dropdown-item>
             <el-dropdown-item @click.native="logout">
               <span class="el-icon-unlock"></span> 退出登录
@@ -79,6 +79,7 @@
 
 <script>
 import local from '@/utils/local'
+
 export default {
   data () {
     return {
@@ -90,7 +91,8 @@ export default {
       name: ''
     }
   },
-  created () { // 页面初始化的时候的钩子函数
+  created () {
+    // 页面初始化的时候的钩子函数
     const user = local.getUser() || {} // 如果没有值也不会报错空对象返回的是undefined
     this.photo = user.photo // 获取头像并赋值
     this.name = user.name
@@ -100,7 +102,8 @@ export default {
       // 切换菜单栏的展开和收起
       this.isOpen = !this.isOpen
     },
-    setting () { // 进入个人设置页面的方法
+    setting () {
+      // 进入个人设置页面的方法
       this.$router.push('/setting')
     },
     logout () {
@@ -126,7 +129,7 @@ export default {
       background: #002044 url("../../assets/logo_admin.png") no-repeat center /
         120px auto;
     }
-    // 切换展示收起时的小图样式
+    //切换小图
     .smallLogo {
       background-image: url("../../assets/logo_admin_01.png");
       background-size: 36px auto;

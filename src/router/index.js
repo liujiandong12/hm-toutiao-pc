@@ -5,6 +5,7 @@ import Login from '@/views/login' // 引入登录模块
 import Home from '@/views/home' // 引入首页模块
 import Welcome from '@/views/welcome' // 欢迎页面路由二级的
 import NotFound from '@/views/404'// 导入404组件
+import Article from '@/views/article'
 
 Vue.use(VueRouter) // 使用router
 
@@ -18,7 +19,8 @@ const router = new VueRouter({
       component: Home,
       children: [
         // 欢迎页面
-        { path: '/', component: Welcome }
+        { path: '/', component: Welcome },
+        { path: '/article', component: Article }
       ]
     },
     // 404页面路由规则 一级路由

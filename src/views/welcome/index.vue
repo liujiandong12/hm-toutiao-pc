@@ -1,8 +1,6 @@
 <template>
   <div class="texts">
-    好好学习,天天向上!
-    <img src="../../assets/timg (2).jpg" alt />
-    \(^_^)/ 哦耶!
+    <img src="../../assets/2011090419171951926.jpg" alt />
   </div>
 </template>
 
@@ -13,14 +11,14 @@ export default {}
 <style scoped lang='less'>
 img {
   display: block;
-  margin: 10px auto;
-  width: 500px;
+  margin: 200px auto;
+  width: 750px;
 }
 .texts {
   font-family: "楷体";
-  font-size: 100px;
+  font-size: 50px;
   text-align: center;
-  color: rgb(189, 220, 250);
-  text-shadow: 20px 15px 15px rgb(0, 0, 5);
+  color: rgb(82, 1, 1);
+  text-shadow: 20px 15px 5px rgb(200, 200, 201);
 }
 </style>

@@ -1,10 +1,11 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'// 引入router
-import local from '@/utils/local'
+import VueRouter from 'vue-router' // 引入router
+import local from '@/utils/local' // 功能函数
 import Login from '@/views/login' // 引入登录模块
 import Home from '@/views/home' // 引入首页模块
+import Image from '@/views/image' // 素材模块
 import Welcome from '@/views/welcome' // 欢迎页面路由二级的
-import NotFound from '@/views/404'// 导入404组件
+import NotFound from '@/views/404' // 导入404组件
 import Article from '@/views/article'
 
 Vue.use(VueRouter) // 使用router
@@ -20,12 +21,16 @@ const router = new VueRouter({
       children: [
         // 欢迎页面
         { path: '/', component: Welcome },
-        { path: '/article', component: Article }
+        // 内容页
+        { path: '/article', component: Article },
+        // 素材页
+        { path: '/image', component: Image }
       ]
     },
     // 404页面路由规则 一级路由
     {
-      path: '*', component: NotFound
+      path: '*',
+      component: NotFound
     }
   ]
 })

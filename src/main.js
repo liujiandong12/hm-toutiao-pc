@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import ElementUI from 'element-ui'// 引用elementUI  第一步
+import ElementUI from 'element-ui' // 引用elementUI  第一步
 import 'element-ui/lib/theme-chalk/index.css' // 引用第二部
-import router from '@/router'
+import router from '@/router' // 路由
+import '@/style/index.less'
 
 import axios from './api/index.js' // 引入axios
 // import MyBread from '@/components/my-bread' // 引入面包屑组件

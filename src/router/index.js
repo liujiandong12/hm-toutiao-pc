@@ -6,7 +6,8 @@ import Home from '@/views/home' // 引入首页模块
 import Image from '@/views/image' // 素材模块
 import Welcome from '@/views/welcome' // 欢迎页面路由二级的
 import NotFound from '@/views/404' // 导入404组件
-import Article from '@/views/article'
+import Article from '@/views/article' // 能容管理
+import Publish from '@/views/publish' // 文章发布
 
 Vue.use(VueRouter) // 使用router
 
@@ -24,7 +25,9 @@ const router = new VueRouter({
         // 内容页
         { path: '/article', component: Article },
         // 素材页
-        { path: '/image', component: Image }
+        { path: '/image', component: Image },
+        // 发布文章
+        { path: '/publish', component: Publish }
       ]
     },
     // 404页面路由规则 一级路由

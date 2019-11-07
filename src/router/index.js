@@ -10,6 +10,7 @@ import Article from '@/views/article' // 能容管理
 import Publish from '@/views/publish' // 文章发布
 import Comment from '@/views/comment' // 评论设置
 import Setting from '@/views/setting' // 个人设置
+import Fans from '@/views/fans' // 个人设置
 
 Vue.use(VueRouter) // 使用router
 
@@ -33,7 +34,9 @@ const router = new VueRouter({
         // 评论管理
         { path: '/comment', component: Comment },
         // 个人设置
-        { path: '/setting', component: Setting }
+        { path: '/setting', component: Setting },
+        // 粉丝管理
+        { path: '/fans', component: Fans }
       ]
     },
     // 404页面路由规则 一级路由

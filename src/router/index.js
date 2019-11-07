@@ -8,7 +8,8 @@ import Welcome from '@/views/welcome' // 欢迎页面路由二级的
 import NotFound from '@/views/404' // 导入404组件
 import Article from '@/views/article' // 能容管理
 import Publish from '@/views/publish' // 文章发布
-import Comment from '@/views/comment' // 文章发布
+import Comment from '@/views/comment' // 评论设置
+import Setting from '@/views/setting' // 个人设置
 
 Vue.use(VueRouter) // 使用router
 
@@ -30,7 +31,9 @@ const router = new VueRouter({
         // 发布文章
         { path: '/publish', component: Publish },
         // 评论管理
-        { path: '/comment', component: Comment }
+        { path: '/comment', component: Comment },
+        // 个人设置
+        { path: '/setting', component: Setting }
       ]
     },
     // 404页面路由规则 一级路由

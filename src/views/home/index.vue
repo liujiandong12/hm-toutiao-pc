@@ -79,7 +79,7 @@
 
 <script>
 import local from '@/utils/local'
-
+import eventBus from '@/eventBus'
 export default {
   data () {
     return {
@@ -96,6 +96,14 @@ export default {
     const user = local.getUser() || {} // 如果没有值也不会报错空对象返回的是undefined
     this.photo = user.photo // 获取头像并赋值
     this.name = user.name
+    // 绑定事件 修改用户名的事件
+    eventBus.$on('updateName', (name) => {
+      this.name = name
+    })
+    // 绑定事件 updatePhoto
+    eventBus.$on('updatePhoto', (photo) => {
+      this.photo = photo
+    })
   },
   methods: {
     toggleMenu () {
